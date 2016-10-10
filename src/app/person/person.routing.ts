@@ -1,7 +1,7 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PersonComponent }    from './person.component';
+import { PersonComponent }       from './person.component';
 import { PersonListComponent }   from './list';
 import { PersonDetailComponent } from './detail';
 import { PersonEditComponent }   from './edit';

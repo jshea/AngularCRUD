@@ -11,7 +11,7 @@ import { AppApiService, Person } from './../../../shared';
       <div class="card">
         <div class="card-header text-xs-center">Person Detail</div>
         <div id="personCard" class="card-block"
-            *ngIf="person">
+             *ngIf="person">
           {{person.firstName}} {{person.lastName}}
           <p>
           <p>

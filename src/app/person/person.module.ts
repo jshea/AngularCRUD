@@ -1,11 +1,11 @@
 import { NgModule }       from '@angular/core';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule }   from '@angular/common';
 import { HttpModule }     from '@angular/http';
 import { RouterModule }   from '@angular/router';
 import { routing }        from './person.routing';
 
-import { PersonComponent }    from './person.component';
+import { PersonComponent }       from './person.component';
 import { PersonListComponent }   from './list';
 import { PersonDetailComponent } from './detail';
 import { PersonEditComponent }   from './edit';
@@ -13,6 +13,7 @@ import { PersonEditComponent }   from './edit';
 @NgModule({
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     HttpModule,
     RouterModule,

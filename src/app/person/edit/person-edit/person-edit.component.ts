@@ -1,28 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute }   from '@angular/router';
-import { AppApiService, Person }            from './../../../shared';
+
+import { Router, ActivatedRoute } from '@angular/router';
+import { AppApiService, Person }  from './../../../shared';
 
 @Component({
   selector: 'app-person-edit',
   template: `
   <div class="container">
     <h1>Person Edit Form</h1>
+
     <form>
-      <div class="form-group">
-        <label for="name">First Name</label>
-        <input type="text" name="firstName" class="form-control" id="firstName" required
-        [(ngModel)]="person.firstName">
+      <div class="form-group row">
+        <label for="firstName" class="col-sm-2 col-form-label">First</label>
+        <div class="col-sm-10">
+          <input type="text" id="firstName" name="firstName" class="form-control" required
+          [(ngModel)]="person.firstName">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="alterEgo">Last Name</label>
-        <input type="text" name="lastName" class="form-control" id="lastName"
-        [(ngModel)]="person.lastName">
+      <div class="form-group row">
+        <label for="lastName" class="col-sm-2 col-form-label">Last</label>
+        <div class="col-sm-10">
+          <input type="text" name="lastName" id="lastName" class="form-control"
+          [(ngModel)]="person.lastName">
+        </div>
       </div>
       <button type="submit" class="btn btn-default"
               (click)=onSave(person)>
         Save
       </button>
     </form>
+
   </div>
   `
 })
@@ -49,14 +56,14 @@ export class PersonEditComponent implements OnInit {
   }
 
   onSave(person: Person) {
-      this.dataLoading = true;
+    this.dataLoading = true;
 
-      this.apiService.save(this.person).subscribe(
-        (res: any) => {
-          this.dataLoading = false;
-          this.router.navigate( [''] );
-        }
-      );
+    this.apiService.save(this.person).subscribe(
+      (res: any) => {
+        this.dataLoading = false;
+        this.router.navigate( [''] );
+      }
+    );
   }
 
 }
