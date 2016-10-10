@@ -1,15 +1,15 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DashboardComponent }    from './dashboard.component';
+import { PersonComponent }    from './person.component';
 import { PersonListComponent }   from './list';
 import { PersonDetailComponent } from './detail';
 import { PersonEditComponent }   from './edit';
 
-const dashboardRoutes: Routes = [
+const personRoutes: Routes = [
   {
-    path: 'dashboard',
-    component: DashboardComponent,
+    path: 'person',
+    component: PersonComponent,
     children: [
       {
         path: '',
@@ -27,4 +27,4 @@ const dashboardRoutes: Routes = [
   }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forChild(dashboardRoutes);
+export const routing: ModuleWithProviders = RouterModule.forChild(personRoutes);

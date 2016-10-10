@@ -1,12 +1,12 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DashboardComponent } from './dashboard';
+import { PersonComponent } from './person';
 
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/person',
     pathMatch: 'full'
   },
   {
@@ -14,8 +14,8 @@ const appRoutes: Routes = [
     loadChildren: './about/about.module#AboutModule'
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent
+    path: 'person',
+    component: PersonComponent
   }
 ];
 

@@ -35,7 +35,7 @@ export class PersonListComponent implements OnInit {
 
   onClick(aPerson: Person) {
     this.router.navigate(
-      ['dashboard/detail/' + aPerson.id]
+      ['person/detail/' + aPerson.id]
     );
   }
 

@@ -3,9 +3,9 @@ import { FormsModule }    from '@angular/forms';
 import { CommonModule }   from '@angular/common';
 import { HttpModule }     from '@angular/http';
 import { RouterModule }   from '@angular/router';
-import { routing }        from './dashboard.routing';
+import { routing }        from './person.routing';
 
-import { DashboardComponent }    from './dashboard.component';
+import { PersonComponent }    from './person.component';
 import { PersonListComponent }   from './list';
 import { PersonDetailComponent } from './detail';
 import { PersonEditComponent }   from './edit';
@@ -19,10 +19,10 @@ import { PersonEditComponent }   from './edit';
     routing
   ],
   declarations: [
-    DashboardComponent,
+    PersonComponent,
     PersonListComponent,
     PersonDetailComponent,
     PersonEditComponent
   ]
 })
-export class DashboardModule {}
+export class PersonModule {}

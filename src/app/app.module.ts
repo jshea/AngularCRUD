@@ -11,8 +11,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { AppComponent }                  from './app.component';
 import { routing, appRoutingProviders }  from './app.routing';
 
-import { DashboardModule } from './dashboard';
-import { AppApiService }   from './shared';
+import { PersonModule }  from './person';
+import { AppApiService } from './shared';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { AppApiService }   from './shared';
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     routing,
-    DashboardModule
+    PersonModule
   ],
   declarations: [
     AppComponent

@@ -49,7 +49,7 @@ export class PersonDetailComponent implements OnInit {
 
   onEdit(person: Person) {
     this.router.navigate(
-      ['dashboard/edit/' + person.id]
+      ['person/edit/' + person.id]
     );
   }
 

@@ -1,4 +1,4 @@
-describe('dashboard', function () {
+describe('person', function () {
 
   beforeEach(function () {
     browser.get('/');

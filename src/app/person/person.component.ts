@@ -1,7 +1,7 @@
 import { Component, OnInit }  from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-person',
   template: `
   <h2>People</h2>
   <div class="container">
@@ -9,7 +9,7 @@ import { Component, OnInit }  from '@angular/core';
   </div>
   `
 })
-export class DashboardComponent implements OnInit {
+export class PersonComponent implements OnInit {
 
   constructor() {}
 
