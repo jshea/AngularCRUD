@@ -1,16 +1,14 @@
-import { Injectable }              from '@angular/core';
+import { Injectable }    from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'; // Unit tests were complaining without this.
 
-import { Person }         from '../../classes';
-
-// https://github.com/johnpapa/angular2-tour-of-heroes/blob/master/app/hero.service.ts
+import { Person, PersonConstants } from '../../classes';
 
 @Injectable()
 export class AppApiService {
-  private url = 'app/people';         // URL to web api
+  private url = PersonConstants.BASE_URL;         // URL to web api
 
   constructor(private http: Http) {}
 
