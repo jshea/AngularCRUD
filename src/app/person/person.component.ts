@@ -3,8 +3,9 @@ import { Component, OnInit }  from '@angular/core';
 @Component({
   selector: 'app-person',
   template: `
-  <h2>People</h2>
   <div class="container">
+    <p>
+    <p>
     <router-outlet></router-outlet>
   </div>
   `
