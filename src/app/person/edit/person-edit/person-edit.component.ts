@@ -5,33 +5,7 @@ import { AppApiService, Person }  from './../../../shared';
 
 @Component({
   selector: 'app-person-edit',
-  template: `
-  <div class="container">
-    <h1>Person Edit Form</h1>
-
-    <form>
-      <div class="form-group row">
-        <label for="firstName" class="col-sm-2 col-form-label">First</label>
-        <div class="col-sm-10">
-          <input type="text" id="firstName" name="firstName" class="form-control" required
-          [(ngModel)]="person.firstName">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="lastName" class="col-sm-2 col-form-label">Last</label>
-        <div class="col-sm-10">
-          <input type="text" name="lastName" id="lastName" class="form-control"
-          [(ngModel)]="person.lastName">
-        </div>
-      </div>
-      <button type="submit" class="btn btn-default"
-              (click)=onSave(person)>
-        Save
-      </button>
-    </form>
-
-  </div>
-  `
+  templateUrl: './person-edit.component.html'
 })
 export class PersonEditComponent implements OnInit {
   private person: Person = new Person();
@@ -56,12 +30,16 @@ export class PersonEditComponent implements OnInit {
   }
 
   onSave(person: Person) {
+    // TODO - Data loading indicator isn't showing
     this.dataLoading = true;
 
     this.apiService.save(this.person).subscribe(
       (res: any) => {
         this.dataLoading = false;
-        this.router.navigate( [''] );
+        // TODO - Why doesn't this navigate to /person, it seems
+        //        to go to the root of the app, reloading data.
+        // Chrome issue? Seems to work correctly on FF!
+        this.router.navigate( ['/person'] );
       }
     );
   }

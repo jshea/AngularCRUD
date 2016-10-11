@@ -23,8 +23,12 @@ export class Person {
     }
   }
 
-  name(): string {
+  get name(): string {
     return this.firstName + ' ' + this.lastName;
+  }
+
+  get address(): string {
+    return this.street + ', ' + this.city + ' ' + this.state + ' ' + this.zip;
   }
 
 }

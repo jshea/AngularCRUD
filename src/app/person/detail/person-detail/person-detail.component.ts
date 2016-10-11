@@ -7,14 +7,37 @@ import { AppApiService, Person } from './../../../shared';
   template: `
   <i *ngIf="dataLoading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" aria-hidden="true"></i>
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-7">
       <div class="card">
-        <div class="card-header text-xs-center">Person Detail</div>
-        <div id="personCard" class="card-block"
-             *ngIf="person">
+        <div class="card-header text-xs-center">
           {{person.firstName}} {{person.lastName}}
-          <p>
-          <p>
+        </div>
+        <div id="personCard" class="card-block" *ngIf="person">
+          <div class="row">
+            <div class="col-sm-2">
+              Address
+            </div>
+            <div class="col-sm-9">
+               {{person.street}}<br>{{person.city}} {{person.state}} {{person.zip}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              Home
+            </div>
+            <div class="col-sm-9">
+               {{person.home}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              Mobile
+            </div>
+            <div class="col-sm-9">
+               {{person.mobile}}
+            </div>
+          </div>
+
           <button id="editButton" class="btn btn-primary btn-sm"
                   (click)=onEdit(person)>
             Edit
