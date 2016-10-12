@@ -6,7 +6,7 @@ export class InMemoryDataService {
   createDb() {
     let people = [
       {
-        id: '1',
+        id: 1,
         firstName: 'James',
         lastName: 'Dilliard',
         street: '6649 N Blue Gum St',
@@ -18,7 +18,7 @@ export class InMemoryDataService {
         email: 'jdilliard@gmail.com'
       },
       {
-        id: '2',
+        id: 2,
         firstName: 'Josephine',
         lastName: 'Darakjy',
         street: '4 B Blue Ridge Blvd',
@@ -30,7 +30,7 @@ export class InMemoryDataService {
         email: 'josephine_darakjy@darakjy.org'
       },
       {
-        id: '3',
+        id: 3,
         firstName: 'Art',
         lastName: 'Venere',
         street: '8 W Cerritos Ave #54',
@@ -42,7 +42,7 @@ export class InMemoryDataService {
         email: 'art@venere.org'
       },
       {
-        id: '4',
+        id: 4,
         firstName: 'Lenna',
         lastName: 'Paprocki',
         street: '639 Main St',
@@ -54,7 +54,7 @@ export class InMemoryDataService {
         email: 'lpaprocki@hotmail.com'
       },
       {
-        id: '5',
+        id: 5,
         firstName: 'Donette',
         lastName: 'Foller',
         street: '34 Center St',

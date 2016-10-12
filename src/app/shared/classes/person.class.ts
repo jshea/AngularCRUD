@@ -1,5 +1,5 @@
 export class Person {
-  public id:        string;
+  public id:        number;
   public firstName: string;
   public lastName:  string;
   public street:    string;
@@ -10,14 +10,14 @@ export class Person {
   public mobile:    string;
   public email:     string;
 
-  constructor(id ?: string, first ?: string, last ?: string) {
-    if (id && first && last) {
+  constructor(id ?: number, first ?: string, last ?: string) {
+    if (id !== 0 && first && last) {
       this.id = id;
       this.firstName = first;
       this.lastName = last;
     }
     else {
-      this.id = '';
+      this.id = 0;
       this.firstName = '';
       this.lastName = '';
     }
