@@ -7,6 +7,13 @@ import { AppApiService, Person }      from './../../../shared/';
   selector: 'app-person-list',
   template: `
   <i *ngIf="dataLoading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+
+  <nav class="nav nav-inline">
+    <a routerLink="/person" routerLinkActive="active" class="nav-link disabled">List</a>
+    <a routerLink="/person/edit" routerLinkActive="active" class="nav-link">Add</a>
+  </nav>
+  <p>
+
   <ul>
     <li *ngFor="let person of people" (click)="onClick(person)">
       {{person.firstName}} {{person.lastName}}
@@ -29,6 +36,7 @@ export class PersonListComponent implements OnInit {
       (res: any) => {
         this.dataLoading = false;
         this.people = res;
+        console.log(JSON.stringify(this.people));
       }
     );
   }

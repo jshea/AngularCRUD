@@ -4,49 +4,7 @@ import { AppApiService, Person } from './../../../shared';
 
 @Component({
   selector: 'app-person-detail',
-  template: `
-  <i *ngIf="dataLoading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" aria-hidden="true"></i>
-  <div class="row">
-    <div class="col-sm-7">
-      <div class="card">
-        <div class="card-header text-xs-center">
-          {{person.firstName}} {{person.lastName}}
-        </div>
-        <div id="personCard" class="card-block" *ngIf="person">
-          <div class="row">
-            <div class="col-sm-2">
-              Address
-            </div>
-            <div class="col-sm-9">
-               {{person.street}}<br>{{person.city}} {{person.state}} {{person.zip}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">
-              Home
-            </div>
-            <div class="col-sm-9">
-               {{person.home}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">
-              Mobile
-            </div>
-            <div class="col-sm-9">
-               {{person.mobile}}
-            </div>
-          </div>
-
-          <button id="editButton" class="btn btn-primary btn-sm"
-                  (click)=onEdit(person)>
-            Edit
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  `
+  templateUrl: './person-detail.component.html'
 })
 export class PersonDetailComponent implements OnInit {
   private person: Person = new Person();
@@ -60,10 +18,11 @@ export class PersonDetailComponent implements OnInit {
     this.dataLoading = true;
 
     this.route.params.subscribe((params: any) => {
-      this.person.id = params.id;
+      this.person.id = (params.id as number);
 
       this.apiService.getPerson(this.person.id).subscribe(
         (res: any) => {
+console.log('person-detail res ' + res);
           this.dataLoading = false;
           this.person = res;
         }
@@ -71,9 +30,36 @@ export class PersonDetailComponent implements OnInit {
     });
   }
 
+
+  /**
+   * Edit button handler. Navigates to the person detail edit component.
+   *
+   * @param {Person} person
+   */
   onEdit(person: Person) {
     this.router.navigate(
       ['person/edit/' + person.id]
+    );
+  }
+
+
+  /**
+   * Deletes the current person and navigates to the people list.
+   *
+   * @param {Person} person
+   */
+  onDelete(person: Person) {
+    // TODO - Data loading indicator isn't showing
+    this.dataLoading = true;
+
+    this.apiService.delete(this.person).subscribe(
+      (res: any) => {
+        this.dataLoading = false;
+        // TODO - Why doesn't this navigate to /person, it seems
+        //        to go to the root of the app, reloading data.
+        // Chrome issue? Seems to work correctly on FF!
+        this.router.navigate( ['person'] );
+      }
     );
   }
 

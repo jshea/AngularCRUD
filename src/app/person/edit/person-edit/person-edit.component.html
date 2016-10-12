@@ -1,7 +1,14 @@
   <div class="container">
+
+  <nav class="nav nav-inline">
+    <a routerLink="/person" routerLinkActive="active" class="nav-link">List</a>
+    <a routerLink="/person" routerLinkActive="active" class="nav-link disabled">Add</a>
+  </nav>
+  <p>
+
     <h3>Person Edit</h3>
 
-    <form>
+    <form #form="ngForm" (ngSubmit)="onSave(form.value)">
 
       <!-- First name -->
       <div class="form-group row">
@@ -74,12 +81,12 @@
           [(ngModel)]="person.mobile">
         </div>
       </div>
-    </form>
 
       <!-- Outside of <form> because Chrome freaks out -->
-      <button class="btn btn-default"
-              (click)=onSave(person)>
+      <button type="submit" class="btn btn-default">
         Save
       </button>
+
+    </form>
 
   </div>

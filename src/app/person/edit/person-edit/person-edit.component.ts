@@ -18,18 +18,32 @@ export class PersonEditComponent implements OnInit {
   ngOnInit() {
     this.dataLoading = true;
 
+    /**
+     * If this is called with a route param (a person id), then it's
+     * in edit mode, othewise were adding a new person.
+     */
     this.route.params.subscribe((params: any) => {
-      this.person.id = params.id;
 
-      this.apiService.getPerson(this.person.id).subscribe(
-        (res: any) => {
-          this.dataLoading = false;
-          this.person = res;
-        }
-      );
+      if (params.id) {
+        this.person.id = params.id;
+
+        this.apiService.getPerson(this.person.id).subscribe(
+          (res: any) => {
+            this.dataLoading = false;
+            this.person = res;
+          }
+        );
+      }
     });
+
   }
 
+
+  /**
+   * Save button handler. Saves changes and redirects to the people list.
+   *
+   * @param {Person} person
+   */
   onSave(person: Person) {
     // TODO - Data loading indicator isn't showing
     this.dataLoading = true;

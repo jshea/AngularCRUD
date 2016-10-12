@@ -20,6 +20,10 @@ const personRoutes: Routes = [
         component: PersonDetailComponent
       },
       {
+        path: 'edit',
+        component: PersonEditComponent
+      },
+      {
         path: 'edit/:id',
         component: PersonEditComponent
       }
