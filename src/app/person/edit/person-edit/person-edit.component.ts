@@ -16,9 +16,10 @@ export class PersonEditComponent implements OnInit {
               public apiService: AppApiService) { }
 
   ngOnInit() {
+    this.dataLoading = true;
+
     this.route.params.subscribe((params: any) => {
       this.person.id = params.id;
-      this.dataLoading = true;
 
       this.apiService.getPerson(this.person.id).subscribe(
         (res: any) => {
@@ -39,7 +40,7 @@ export class PersonEditComponent implements OnInit {
         // TODO - Why doesn't this navigate to /person, it seems
         //        to go to the root of the app, reloading data.
         // Chrome issue? Seems to work correctly on FF!
-        this.router.navigate( ['/person'] );
+        this.router.navigate( ['person'] );
       }
     );
   }

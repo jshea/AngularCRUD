@@ -57,9 +57,10 @@ export class PersonDetailComponent implements OnInit {
               public apiService: AppApiService) { }
 
   ngOnInit() {
+    this.dataLoading = true;
+
     this.route.params.subscribe((params: any) => {
       this.person.id = params.id;
-      this.dataLoading = true;
 
       this.apiService.getPerson(this.person.id).subscribe(
         (res: any) => {
