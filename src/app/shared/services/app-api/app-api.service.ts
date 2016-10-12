@@ -23,9 +23,13 @@ export class AppApiService {
 
 
   // Get one person
-  getPerson(id: string): Observable<Person> {
-    return this.getPeople()
-      .map((people: any) => people.find((person: any) => person.id === id));
+  getPerson(id: number): Observable<Person> {
+    let url = `${this.url}/${id}`;
+
+    return this.http
+               .get(url)
+               .map((res: any) => res.json().data as Person[])
+               .catch(this.handleError);
   }
 
 
