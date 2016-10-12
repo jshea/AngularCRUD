@@ -74,11 +74,12 @@
           [(ngModel)]="person.mobile">
         </div>
       </div>
+    </form>
 
-      <button type="submit" class="btn btn-default"
+      <!-- Outside of <form> because Chrome freaks out -->
+      <button class="btn btn-default"
               (click)=onSave(person)>
         Save
       </button>
-    </form>
 
   </div>
