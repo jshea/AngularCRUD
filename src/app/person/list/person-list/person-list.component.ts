@@ -36,6 +36,31 @@ export class PersonListComponent implements OnInit {
       (res: any) => {
         this.dataLoading = false;
         this.people = res;
+
+        this.people.sort((a: Person, b: Person) =>  {
+
+          console.log(JSON.stringify(a), JSON.stringify(b));
+
+          if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) {
+            return -1;
+          }
+          else if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) {
+            return 1;
+          }
+          else if (a.lastName.toLowerCase() === b.lastName.toLowerCase() && a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+            return -1;
+          }
+          else if (a.lastName.toLowerCase() === b.lastName.toLowerCase() && a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
+            return 1;
+          }
+          else if (a.lastName.toLowerCase() === b.lastName.toLowerCase() && a.firstName.toLowerCase() === b.firstName.toLowerCase()) {
+            return 0;
+          }
+          else {
+            return 1;
+          }
+        });
+
         console.log(JSON.stringify(this.people));
       }
     );
