@@ -4,6 +4,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppApiService, Person }  from './../../../shared';
 
+/**
+ * Edit (Add and Update) component. Uses ng2 reactive forms. Very similar to:
+ *   http://blog.thoughtram.io/angular/2016/06/22/model-driven-forms-in-angular-2.html
+ *
+ * @export
+ * @class PersonEditComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-person-edit',
   templateUrl: './person-edit.component.html'
@@ -16,32 +24,28 @@ export class PersonEditComponent implements OnInit {
   constructor(public router: Router,
               public route: ActivatedRoute,
               public apiService: AppApiService,
-              public fb: FormBuilder) {
-    this.editForm = this.fb.group({
+              public formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.editForm = this.formBuilder.group({
+      id:         '', // string is an optional default value
+      //         [value, synchronous validator, asynchronous validator]
       firstName: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(30)])],
       lastName:  ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(30)])],
-      // address: this.fb.group({
+      address: this.formBuilder.group({
         street: '',
         city:   '',
         state:  '',
-        zip:    '',
-      // }),
-      // phone: this.fb.group({
+        zip:    ''
+      }),
+      phone: this.formBuilder.group({
+        // Not required but if present must be between 10 and 15 chars. Not validated (see what I did there?)
         home:   ['', Validators.compose([Validators.minLength(10), Validators.maxLength(15)])],
         mobile: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(15)])]
-      // })
+      }),
+      email: '',
     });
-    // This requires all values to be set. Includes error handling.
-    // this.form.setValue();
 
-    // Can use subset/superset of values but no error handling/messaging.
-    // this.editForm.patchValue({
-    //   firstName: 'Jim',
-    //   lastName: 'Shea'
-    // });
-  }
-
-  ngOnInit() {
     this.dataLoading = true;
 
     /**
@@ -57,6 +61,14 @@ export class PersonEditComponent implements OnInit {
           (res: any) => {
             this.dataLoading = false;
             this.person = res;
+            // TODO - Why is this is getting called twice!
+            console.log(JSON.stringify(res));
+
+            // Can use subset/superset of values but no error handling/messaging.
+            // this.editForm.patchValue(this.person);
+
+            // Requires all values but allows error handling/messaging (I think Kara said this in her AC video)?
+            this.editForm.setValue(this.person);
           }
         );
       }
