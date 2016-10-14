@@ -1,14 +1,12 @@
+import { Address, Phone } from './';
+
 export class Person {
   public id:        number;
   public firstName: string;
   public lastName:  string;
-  public street:    string;
-  public city:      string;
-  public state:     string;
-  public zip:       string;
+  public address:   Address;
   public home:      string;
-  public mobile:    string;
-  public email:     string;
+  public phone:     Phone;
 
   constructor(id ?: number, first ?: string, last ?: string) {
     if (id !== 0 && first && last) {
@@ -23,12 +21,8 @@ export class Person {
     }
   }
 
-  get name(): string {
+  getName(): string {
     return this.firstName + ' ' + this.lastName;
-  }
-
-  get address(): string {
-    return this.street + ', ' + this.city + ' ' + this.state + ' ' + this.zip;
   }
 
 }

@@ -20,7 +20,7 @@
             Address
           </div>
           <div class="col-sm-9">
-              {{person.street}}<br>{{person.city}} {{person.state}} {{person.zip}}
+              {{person.address.street}}<br>{{person.address.city}} {{person.address.state}} {{person.address.zip}}
           </div>
         </div>
         <div class="row">
@@ -28,7 +28,7 @@
             Home
           </div>
           <div class="col-sm-9">
-              {{person.home}}
+              {{person.phone.home}}
           </div>
         </div>
         <div class="row">
@@ -36,7 +36,7 @@
             Mobile
           </div>
           <div class="col-sm-9">
-              {{person.mobile}}
+              {{person.phone.mobile}}
           </div>
         </div>
 

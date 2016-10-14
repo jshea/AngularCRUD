@@ -2,10 +2,14 @@ import { Injectable }    from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map'; // Unit tests were complaining without this.
+import 'rxjs/add/operator/map';
 
 import { Person, PersonConstants } from '../../classes';
 
+/*
+ * No need to worry about Providers/Services/Factories, which to use. Just
+ * decorate with @Injectable()
+ */
 @Injectable()
 export class AppApiService {
   private url = PersonConstants.BASE_URL;         // URL to web api

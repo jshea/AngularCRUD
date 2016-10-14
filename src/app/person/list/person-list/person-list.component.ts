@@ -39,8 +39,6 @@ export class PersonListComponent implements OnInit {
 
         this.people.sort((a: Person, b: Person) =>  {
 
-          console.log(JSON.stringify(a), JSON.stringify(b));
-
           if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) {
             return -1;
           }
@@ -61,7 +59,6 @@ export class PersonListComponent implements OnInit {
           }
         });
 
-        console.log(JSON.stringify(this.people));
       }
     );
   }

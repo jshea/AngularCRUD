@@ -22,7 +22,6 @@ export class PersonDetailComponent implements OnInit {
 
       this.apiService.getPerson(this.person.id).subscribe(
         (res: any) => {
-console.log('person-detail res ' + res);
           this.dataLoading = false;
           this.person = res;
         }
