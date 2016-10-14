@@ -8,82 +8,117 @@
 
     <h3>Person Edit</h3>
 
-    <form #form="ngForm" (ngSubmit)="onSave(form.value)">
+    <form [formGroup]="editForm" (ngSubmit)="onSave(form.value)" novalidate>
 
       <!-- First name -->
-      <div class="form-group row">
+      <div class="form-group row"
+           [ngClass]="{'has-error':!editForm.controls['firstName'].valid && editForm.controls['firstName'].dirty}">
         <label for="firstName" class="col-sm-3 col-form-label">First</label>
         <div class="col-sm-9">
-          <input type="text" id="firstName" name="firstName" class="form-control" required
-          [(ngModel)]="person.firstName">
+          <input formControlName="firstName" id="firstName" class="form-control form-control-sm" placeholder="First name" [(ngModel)]="person.firstName">
+          <div *ngIf="editForm.controls['firstName'].hasError('required') && editForm.controls['firstName'].dirty" class="alert alert-danger">
+            You must include a first name
+          </div>
+          <div *ngIf="editForm.controls['firstName'].hasError('minlength') && editForm.controls['firstName'].dirty" class="alert alert-danger">
+            Names must be at least two characters
+          </div>
+          <div *ngIf="editForm.controls['firstName'].hasError('maxlength') && editForm.controls['firstName'].dirty" class="alert alert-danger">
+            Names can't be longer than 30 characters
+          </div>
         </div>
       </div>
 
       <!-- Last name -->
-      <div class="form-group row">
+      <div class="form-group row"
+           [ngClass]="{'has-error':!editForm.controls['lastName'].valid && editForm.controls['lastName'].dirty}">
         <label for="lastName" class="col-sm-3 col-form-label">Last</label>
         <div class="col-sm-9">
-          <input type="text" name="lastName" id="lastName" class="form-control"
-          [(ngModel)]="person.lastName">
+          <input formControlName="lastName" id="lastName" class="form-control form-control-sm" placeholder="Last name" [(ngModel)]="person.lastName">
+          <div *ngIf="editForm.controls['lastName'].hasError('required') && editForm.controls['lastName'].dirty" class="alert alert-danger">
+            You must include a last name
+          </div>
+          <div *ngIf="editForm.controls['lastName'].hasError('required') && editForm.controls['lastName'].dirty" class="alert alert-danger">
+            You must include a first name
+          </div>
+          <div *ngIf="editForm.controls['lastName'].hasError('minlength') && editForm.controls['lastName'].dirty" class="alert alert-danger">
+            Names must be at least two characters
+          </div>
+          <div *ngIf="editForm.controls['lastName'].hasError('maxlength') && editForm.controls['lastName'].dirty" class="alert alert-danger">
+            Names can't be longer than 30 characters
+          </div>
         </div>
       </div>
 
-      <!-- Street -->
-      <div class="form-group row">
-        <label for="street" class="col-sm-3 col-form-label">Street</label>
-        <div class="col-sm-9">
-          <input type="text" name="street" id="street" class="form-control"
-          [(ngModel)]="person.street">
+      <!--<div formGroupName="address">-->
+        <!-- Street -->
+        <div class="form-group row">
+          <label for="street" class="col-sm-3 col-form-label">Street</label>
+          <div class="col-sm-9">
+            <input formControlName="street" id="street" class="form-control form-control-sm" placeholder="Street"
+            [(ngModel)]="person.address.street">
+          </div>
         </div>
-      </div>
 
-      <!-- City -->
-      <div class="form-group row">
-        <label for="city" class="col-sm-3 col-form-label">City</label>
-        <div class="col-sm-9">
-          <input type="text" name="city" id="city" class="form-control"
-          [(ngModel)]="person.city">
+        <!-- City -->
+        <div class="form-group row">
+          <label for="city" class="col-sm-3 col-form-label">City</label>
+          <div class="col-sm-9">
+            <input formControlName="city" id="city" class="form-control form-control-sm" placeholder="City"
+            [(ngModel)]="person.address.city">
+          </div>
         </div>
-      </div>
 
-      <!-- State -->
-      <div class="form-group row">
-        <label for="state" class="col-sm-3 col-form-label">State</label>
-        <div class="col-sm-9">
-          <input type="text" name="state" id="state" class="form-control"
-          [(ngModel)]="person.state">
+        <!-- State -->
+        <div class="form-group row">
+          <label for="state" class="col-sm-3 col-form-label">State</label>
+          <div class="col-sm-9">
+            <input formControlName="state" id="state" class="form-control form-control-sm" placeholder="State"
+            [(ngModel)]="person.address.state">
+          </div>
         </div>
-      </div>
 
-      <!-- Zip -->
-      <div class="form-group row">
-        <label for="zip" class="col-sm-3 col-form-label">Zip</label>
-        <div class="col-sm-9">
-          <input type="text" name="zip" id="zip" class="form-control"
-          [(ngModel)]="person.zip">
+        <!-- Zip -->
+        <div class="form-group row">
+          <label for="zip" class="col-sm-3 col-form-label">Zip</label>
+          <div class="col-sm-9">
+            <input formControlName="zip" id="zip" class="form-control form-control-sm" placeholder="Zip"
+            [(ngModel)]="person.address.zip">
+          </div>
         </div>
-      </div>
+      <!--</div>-->
 
-      <!-- Home phone -->
-      <div class="form-group row">
-        <label for="home" class="col-sm-3 col-form-label">Home phone</label>
-        <div class="col-sm-9">
-          <input type="text" name="home" id="home" class="form-control"
-          [(ngModel)]="person.home">
+      <!--<div formGroupName="phone">-->
+        <!-- Home phone -->
+        <div class="form-group row">
+          <label for="home" class="col-sm-3 col-form-label">Home phone</label>
+          <div class="col-sm-9">
+            <input formControlName="home" id="home" class="form-control form-control-sm" placeholder="Home phone" [(ngModel)]="person.phone.home">
+            <div *ngIf="editForm.controls['home'].hasError('minlength') && editForm.controls['home'].dirty" class="alert alert-danger">
+              Phone numbers must be at least 10 characters
+            </div>
+            <div *ngIf="editForm.controls['home'].hasError('maxlength') && editForm.controls['home'].dirty" class="alert alert-danger">
+              Phone numbers must be at most 15 characters
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Mobile phone -->
-      <div class="form-group row">
-        <label for="mobile" class="col-sm-3 col-form-label">Mobile phone</label>
-        <div class="col-sm-9">
-          <input type="text" name="mobile" id="mobile" class="form-control"
-          [(ngModel)]="person.mobile">
+        <!-- Mobile phone -->
+        <div class="form-group row">
+          <label for="mobile" class="col-sm-3 col-form-label">Mobile phone</label>
+          <div class="col-sm-9">
+            <input formControlName="mobile" id="mobile" class="form-control form-control-sm" placeholder="Mobile phone" [(ngModel)]="person.phone.mobile">
+            <div *ngIf="editForm.controls['mobile'].hasError('minlength') && editForm.controls['mobile'].dirty" class="alert alert-danger">
+              Phone numbers must be at least 10 characters
+            </div>
+            <div *ngIf="editForm.controls['mobile'].hasError('maxlength') && editForm.controls['mobile'].dirty" class="alert alert-danger">
+              Phone numbers must be at most 15 characters
+            </div>
+          </div>
         </div>
-      </div>
+      <!--</div>-->
 
       <!-- Outside of <form> because Chrome freaks out -->
-      <button type="submit" class="btn btn-default">
+      <button type="submit" class="btn btn-sm btn-success" [disabled]="!editForm.valid">
         Save
       </button>
 
