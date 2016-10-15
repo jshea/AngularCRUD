@@ -7,8 +7,8 @@ import 'rxjs/add/operator/map';
 import { Person, PersonConstants } from '../../classes';
 
 /*
- * No need to worry about Providers/Services/Factories, which to use. Just
- * decorate with @Injectable()
+ * No need to worry about Providers/Services/Factories - which to use. Just
+ * decorate a class with @Injectable()
  */
 @Injectable()
 export class AppApiService {
@@ -22,7 +22,7 @@ export class AppApiService {
     return this.http
                .get(this.url)
                .map((res: any) => res.json().data as Person[])
-               .catch(this.handleError);  // TODO - Catch errors here or in call to this function?
+               .catch(this.handleError);  // TODO - Catch errors here or in a call to this function?
   }
 
 

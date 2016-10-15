@@ -52,8 +52,8 @@ API service - End points for
 * Adding a person - No UI for this yet
 * Deleting a person - No UI for this yet
 
-### Providers
-URL - Not yet implemented.
+### Constants
+URL - Encapsulated in person-constants class.
 
 ### Technology changes beyond ng-seed
 Added Bootstrap 4 and Font Awesome.
