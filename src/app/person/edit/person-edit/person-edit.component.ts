@@ -39,7 +39,7 @@ export class PersonEditComponent implements OnInit {
         zip:    ''
       }),
       phone: this.formBuilder.group({
-        // Not required but if present must be between 10 and 15 chars. Not validated (see what I did there?)
+        // Not required but if present must be between 10 and 15 chars.
         home:   ['', Validators.compose([Validators.minLength(10), Validators.maxLength(15)])],
         mobile: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(15)])]
       }),

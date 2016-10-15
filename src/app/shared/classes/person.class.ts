@@ -19,6 +19,8 @@ export class Person {
       this.firstName = '';
       this.lastName = '';
     }
+    this.address = new Address();
+    this.phone = new Phone();
   }
 
   getName(): string {
