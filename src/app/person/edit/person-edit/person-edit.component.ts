@@ -50,7 +50,7 @@ export class PersonEditComponent implements OnInit {
 
     /**
      * If this is called with a route param (a person id), then it's
-     * in edit mode, othewise were adding a new person.
+     * in edit mode, othewise we are adding a new person.
      */
     this.route.params.subscribe((params: any) => {
 
@@ -61,14 +61,12 @@ export class PersonEditComponent implements OnInit {
           (res: any) => {
             this.dataLoading = false;
             this.person = res;
-            // TODO - Why is this is getting called twice!
-            console.log(JSON.stringify(res));
 
             // Can use subset/superset of values but no error handling/messaging.
             // this.editForm.patchValue(this.person);
 
             // Requires all values but allows error handling/messaging (I think Kara said this in her AC video)?
-            this.editForm.setValue(this.person);
+            // this.editForm.setValue(this.person);
           }
         );
       }
@@ -82,16 +80,12 @@ export class PersonEditComponent implements OnInit {
    *
    * @param {Person} person
    */
-  onSave(person: Person) {
-    // TODO - Data loading indicator isn't showing
-    this.dataLoading = true;
+  onSave() {
+    this.dataLoading = true;    // TODO - Data loading indicator isn't showing
 
     this.apiService.save(this.person).subscribe(
       (res: any) => {
         this.dataLoading = false;
-        // TODO - Why doesn't this navigate to /person, it seems
-        //        to go to the root of the app, reloading data.
-        // Chrome issue? Seems to work correctly on FF!
         this.router.navigate( ['person'] );
       }
     );
