@@ -88,6 +88,6 @@ Delete cached npm data. When you really, really want to start from scratch.
 .gitignore | "If you create a file in your repository named .gitignore, Git uses it to determine which files and directories to ignore, before you make a commit. "<br>https://help.github.com/articles/ignoring-files/
 package.json | Contains meta data for the project including libraries (and versions) to be downloaded, post installation processes to run and development scripts.
 README.md | This file you're reading
-tsconfig.json | Typescript transpiler configuration.<br>http://www.typescriptlang.org/
+tsconfig.json | Typescript transpiler configuration.<br>http://typescriptlang.org/
 tslint.json | Configuration file for the tslinter. "TSLint checks your TypeScript code for readability, maintainability, and functionality errors."<br>https://palantir.github.io/tslint/
 webpack.config.js |
