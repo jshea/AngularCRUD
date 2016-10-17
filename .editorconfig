@@ -1,3 +1,5 @@
+# Define coding styles that can be used by different editors
+#
 # http://editorconfig.org
 
 root = true

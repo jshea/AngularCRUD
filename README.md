@@ -3,20 +3,26 @@
 This is my learning/experimenting/sharing Angular 2 CRUD application. It uses Chris Camargo's [ng-seed](https://github.com/camargo/ng-seed) as its foundation.
 
 ## Some potentially interesting features
-* Typescript classes
-* InMemoryWebApiModule (mock REST api & database)
-* Lazy loaded module (about).
+* Basic Create/Report/Update/Delete functionality
+* [InMemoryWebApiModule](https://github.com/angular/in-memory-web-api) (mock REST api & database)
+* Lazy loaded module (about module is lazy loaded).
 * Reactive Forms
 * Form validations
-* Basic Create/Report/Update/Delete functionality
-* Bootstrap 4 formatting
+* Bootstrap 4 (responsive grid, buttons, cards, forms)
+* Typescript classes
 
 ## Getting started
-Current version of [NodeJS](https://nodejs.org/), version 6.7 as of this writing.
-* In the AngularCRUD folder, run `npm install` to load dependent libraries into the `node_modules` folder.
-* Run `npm start` to build the application with Webpack and start a light http server. The application will be available at [http://localhost:8080/](http://localhost:8080/).
+This was created and runs using the current version of [NodeJS](https://nodejs.org/), version 6.7 as of this writing.
+* In the AngularCRUD folder, run `npm install` to load dependent libraries and perform post installation configuration. Package.json contains libs to be loaded into the `node_modules` folder.
+* Run `npm start` to build the application with [Webpack](https://webpack.github.io/) and start a lightweight http server. The application will be available at [http://localhost:8080/](http://localhost:8080/).
 
 ## Angular architectural aspects
+Chris Camargo's [ng-seed](https://github.com/camargo/ng-seed) provides the foundation for this application. This ng-seed provides:
+* Core package.json
+* Webpack build and run configuration files
+* Linting (lint errors will prevent running, a good practice if a bit harsh)
+* Testing harness - Unit (Karma) and E2E (Protractor)
+* app with module, router and beginning components
 
 ### Best Practices
 Follows the Angular Best Practices as identified in the [style guide](https://angular.io/styleguide).
@@ -66,7 +72,22 @@ Added Bootstrap 4 and Font Awesome.
 `npm install` | Install all modules/libraries listed in package.json
 
 ### Check for version updates
-#### npm outdated
+```
+npm outdated
+```
 Update package.json as desired and re-run initial installation commands above.
-#### npm cache clean
+```
+npm cache clean
+```
 Delete cached npm data. When you really, really want to start from scratch.
+
+## files
+| File | Description |
+---|---
+.editorconfig | "EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs. The EditorConfig project consists of a file format for defining coding styles and a collection of text editor plugins that enable editors to read the file format and adhere to defined styles."<br>http://editorconfig.org/
+.gitignore | "If you create a file in your repository named .gitignore, Git uses it to determine which files and directories to ignore, before you make a commit. "<br>https://help.github.com/articles/ignoring-files/
+package.json | Contains meta data for the project including libraries (and versions) to be downloaded, post installation processes to run and development scripts.
+README.md | This file you're reading
+tsconfig.json | Typescript transpiler configuration.<br>http://www.typescriptlang.org/
+tslint.json | Configuration file for the tslinter. "TSLint checks your TypeScript code for readability, maintainability, and functionality errors."<br>https://palantir.github.io/tslint/
+webpack.config.js |

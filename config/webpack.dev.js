@@ -1,3 +1,6 @@
+/**
+ * Development configuration for Webpack
+ */
 var webpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var commonConfig = require('./webpack.common.js');

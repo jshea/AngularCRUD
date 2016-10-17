@@ -1,3 +1,6 @@
+/**
+ * Production version of the Webpack configuration
+ */
 var webpack = require('webpack');
 var webpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');

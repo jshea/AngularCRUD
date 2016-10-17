@@ -1,3 +1,6 @@
+/**
+ * Webpack support file
+ */
 var path = require('path');
 var _root = path.resolve(__dirname, '..');
 

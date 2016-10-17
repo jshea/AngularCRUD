@@ -1,3 +1,6 @@
+/**
+ * Webpack configuration common to dev and prod builds
+ */
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -10,8 +13,8 @@ module.exports = {
 
   entry: {
     'polyfills': './src/browser.polyfills.ts',
-    'vendor': './src/browser.vendor.ts',
-    'app': './src/browser.main.ts'
+    'vendor':    './src/browser.vendor.ts',
+    'app':       './src/browser.main.ts'
   },
 
   module: {

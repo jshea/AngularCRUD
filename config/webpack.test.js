@@ -1,3 +1,6 @@
+/**
+ * TODO - Check with Chris - When would this be used?
+ */
 var helpers = require('./helpers');
 
 module.exports = {
