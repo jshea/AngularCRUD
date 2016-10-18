@@ -23,7 +23,9 @@
         You must include a first name
       </div>
       <div *ngIf="editForm.controls.firstName.hasError('minlength') && editForm.controls.firstName.dirty" class="alert alert-danger">
-        Names must be at least two characters
+        <!-- How to get requiredLength? This was in Lynda.com forms class - Built-in validators -->
+        <!-- Names must be at least {{editForm.controls.lastName.errors.minlength.requiredlength}} characters -->
+        Names must be at least 2 characters
       </div>
       <div *ngIf="editForm.controls.firstName.hasError('maxlength') && editForm.controls.firstName.dirty" class="alert alert-danger">
         Names can't be longer than 30 characters
@@ -41,7 +43,7 @@
         You must include a last name
       </div>
       <div *ngIf="editForm.controls.lastName.hasError('minlength') && editForm.controls.lastName.dirty" class="alert alert-danger">
-        Names must be at least two characters
+        Names must be at least 2 characters
       </div>
       <div *ngIf="editForm.controls.lastName.hasError('maxlength') && editForm.controls.lastName.dirty" class="alert alert-danger">
         Names can't be longer than 30 characters

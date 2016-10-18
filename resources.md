@@ -2,6 +2,8 @@
 ## Resources
 This is far from a comprehensive list of available resources. These are just some resources I've used or am aware of.
 
+Beware that some resources were created prior to the 2.0 final release. Significant changes were made to Angular 2 between Release Candidate releases. I found some Lynda.com courses were a bit out of date with respect to the Router and Forms modules.
+
 * A couple sites I found really useful
   * [Scotch.io](https://search.scotch.io/?query=angular+2)
   * [Thoughtram](http://blog.thoughtram.io/categories/angular-2/)
