@@ -5,7 +5,6 @@ export class Person {
   public firstName: string;
   public lastName:  string;
   public address:   Address;
-  public home:      string;
   public phone:     Phone;
 
   constructor(id ?: number, first ?: string, last ?: string) {
