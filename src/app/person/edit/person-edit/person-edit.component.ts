@@ -54,6 +54,7 @@ export class PersonEditComponent implements OnInit {
      */
     this.route.params.subscribe((params: any) => {
 
+      // If there's an id on the url - then we're an update, get the data from our REST api
       if (params.id) {
         this.person.id = params.id;
 
