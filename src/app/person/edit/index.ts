@@ -1,1 +1,1 @@
-export * from './person-edit';
+export { PersonEditComponent } from './person-edit.component';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router, ActivatedRoute } from '@angular/router';
-import { AppApiService, Person }  from './../../../shared';
+import { AppApiService, Person }  from './../../shared';
 
 /**
  * Edit (Add and Update) component. Uses ng2 reactive forms. Very similar to:
@@ -46,7 +46,6 @@ export class PersonEditComponent implements OnInit {
       email: '',
     });
 
-    this.dataLoading = true;
 
     /**
      * If this is called with a route param (a person id), then it's
@@ -56,12 +55,18 @@ export class PersonEditComponent implements OnInit {
 
       // If there's an id on the url - then we're an update, get the data from our REST api
       if (params.id) {
+        this.dataLoading = true;
         this.person.id = params.id;
 
         this.apiService.getPerson(this.person.id).subscribe(
           (res: any) => {
-            this.dataLoading = false;
             this.person = res;
+
+            // TODO - Doesn't reset the validation on First and Last name labels.
+            this.editForm.reset();
+            this.editForm.controls['firstName'].updateValueAndValidity();
+
+            this.dataLoading = false;
 
             // Can use subset/superset of values but no error handling/messaging.
             // this.editForm.patchValue(this.person);

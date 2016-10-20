@@ -1,0 +1,144 @@
+
+<nav class="nav nav-inline">
+  <a routerLink="/person" routerLinkActive="active" class="nav-link">List</a>
+  <a routerLink="/person" routerLinkActive="active" class="nav-link disabled">Add</a>
+</nav>
+
+<h3>Person Edit</h3>
+
+<span *ngIf="dataLoading">
+  <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
+</span>
+
+<div *ngIf="!dataLoading">
+
+  <form [formGroup]="editForm" (ngSubmit)="onSave()" novalidate>
+
+    <!-- First name -->
+    <div class="form-group row" [ngClass]="{'has-danger':!editForm.controls.firstName.valid && editForm.controls.firstName.dirty}">
+      <label for="firstName" class="col-sm-3 col-form-label" [ngClass]="{'text-danger':!editForm.controls.firstName.valid}">First</label>
+      <div class="col-sm-9">
+        <!--
+          Fully Reactive style, don't need name= or ngModel
+        <input type="text" formControlName="firstName" class="form-control form-control-sm">
+        -->
+        <input type="text" formControlName="firstName" class="form-control form-control-sm" placeholder="First name" [(ngModel)]="person.firstName">
+
+        <div *ngIf="editForm.controls.firstName.hasError('required') && editForm.controls.firstName.dirty" class="text-danger">
+          You must include a first name
+        </div>
+        <div *ngIf="editForm.controls.firstName.hasError('minlength') && editForm.controls.firstName.dirty" class="text-danger">
+          <!-- How to get requiredLength? This was in Lynda.com forms class - Built-in validators -->
+          <!-- Names must be at least {{editForm.controls.lastName.errors.minlength.requiredlength}} characters -->
+          Names must be at least 2 characters
+        </div>
+        <div *ngIf="editForm.controls.firstName.hasError('maxlength') && editForm.controls.firstName.dirty" class="text-danger">
+          Names can't be longer than 30 characters
+        </div>
+      </div>
+    </div>
+
+    <!-- Last name -->
+    <div class="form-group row" [ngClass]="{'has-danger':!editForm.controls.lastName.valid && editForm.controls.lastName.dirty}">
+      <label for="lastName" class="col-sm-3 col-form-label" [ngClass]="{'text-danger':!editForm.controls.lastName.valid}">Last</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="lastName" class="form-control form-control-sm" placeholder="Last name" [(ngModel)]="person.lastName">
+        <div *ngIf="editForm.controls.lastName.hasError('required') && editForm.controls.lastName.dirty" class="text-danger">
+          You must include a last name
+        </div>
+        <div *ngIf="editForm.controls.lastName.hasError('minlength') && editForm.controls.lastName.dirty" class="text-danger">
+          Names must be at least 2 characters
+        </div>
+        <div *ngIf="editForm.controls.lastName.hasError('maxlength') && editForm.controls.lastName.dirty" class="text-danger">
+          Names can't be longer than 30 characters
+        </div>
+      </div>
+    </div>
+
+    <fieldset formGroupName="address">
+
+      <!-- Street -->
+      <div class="form-group row">
+        <label for="street" class="col-sm-3 col-form-label">Street</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="street" class="form-control form-control-sm" placeholder="Street" [(ngModel)]="person.address.street">
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="form-group row">
+        <label for="city" class="col-sm-3 col-form-label">City</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="city" class="form-control form-control-sm" placeholder="City" [(ngModel)]="person.address.city">
+        </div>
+      </div>
+
+      <!-- State -->
+      <div class="form-group row">
+        <label for="state" class="col-sm-3 col-form-label">State</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="state" class="form-control form-control-sm" placeholder="State" [(ngModel)]="person.address.state">
+        </div>
+      </div>
+
+      <!-- Zip -->
+      <div class="form-group row">
+        <label for="zip" class="col-sm-3 col-form-label">Zip</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="zip" class="form-control form-control-sm" placeholder="Zip" [(ngModel)]="person.address.zip">
+        </div>
+      </div>
+
+    </fieldset>
+
+    <fieldset formGroupName="phone">
+
+      <!-- Home phone -->
+      <div class="form-group row" [ngClass]="{'has-danger':!editForm.controls.phone.controls.home.valid && editForm.controls.phone.controls.home.dirty}">
+        <label for="home" class="col-sm-3 col-form-label" [ngClass]="{'text-danger':!editForm.controls.phone.controls.home.valid}">Home phone</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="home" class="form-control form-control-sm" placeholder="Home phone" [(ngModel)]="person.phone.home">
+          <div *ngIf="editForm.controls.phone.controls.home.hasError('minlength') && editForm.controls.phone.controls.home.dirty" class="text-danger">
+            Phone numbers must be at least 10 characters
+          </div>
+          <div *ngIf="editForm.controls.phone.controls.home.hasError('maxlength') && editForm.controls.phone.controls.home.dirty" class="text-danger">
+            Phone numbers must be at most 15 characters
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile phone -->
+      <div class="form-group row" [ngClass]="{'has-danger':!editForm.controls.phone.controls.mobile.valid && editForm.controls.phone.controls.mobile.dirty}">
+        <label for="mobile" class="col-sm-3 col-form-label" [ngClass]="{'text-danger':!editForm.controls.phone.controls.mobile.valid}">Mobile phone</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="mobile" class="form-control form-control-sm" placeholder="Mobile phone" [(ngModel)]="person.phone.mobile">
+          <div *ngIf="editForm.controls.phone.controls.mobile.hasError('minlength') && editForm.controls.phone.controls.mobile.dirty" class="text-danger">
+            Phone numbers must be at least 10 characters
+          </div>
+          <div *ngIf="editForm.controls.phone.controls.mobile.hasError('maxlength') && editForm.controls.phone.controls.mobile.dirty" class="text-danger">
+            Phone numbers must be at most 15 characters
+          </div>
+        </div>
+      </div>
+
+    </fieldset>
+
+    <!-- Email -->
+    <div class="form-group row">
+      <label for="email" class="col-sm-3 col-form-label">eMail</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="email" class="form-control form-control-sm" placeholder="eMail" [(ngModel)]="person.email">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-sm btn-success" [disabled]="!editForm.valid">
+      Save
+    </button>
+
+  </form>
+</div>
+
+<!--
+<br>Form: {{ editForm.value | json }}
+<br>Form status: {{ editForm.status }}
+-->

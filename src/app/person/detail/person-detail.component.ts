@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute }   from '@angular/router';
-import { AppApiService, Person } from './../../../shared';
+import { Component, OnInit }      from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AppApiService, Person }  from './../../shared';
 
 @Component({
   selector: 'app-person-detail',
