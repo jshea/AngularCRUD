@@ -90,7 +90,7 @@ export class PersonEditComponent implements OnInit {
     this.dataLoading = true;    // TODO - Data loading indicator isn't showing
 
     this.apiService.save(this.person).subscribe(
-      (res: any) => {
+      () => {
         this.dataLoading = false;
         this.router.navigate( ['person'] );
       }
