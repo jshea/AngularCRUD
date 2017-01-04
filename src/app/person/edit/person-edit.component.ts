@@ -13,13 +13,13 @@ import { AppApiService, Person }  from './../../shared';
  * @implements {OnInit}
  */
 @Component({
-  selector: 'app-person-edit',
+  selector:    'app-person-edit',
   templateUrl: './person-edit.component.html'
 })
 export class PersonEditComponent implements OnInit {
-  private person: Person = new Person();
+  public  person: Person = new Person();
   private dataLoading: boolean = false;
-  private editForm: FormGroup;
+  public  editForm: FormGroup;
 
   constructor(public router: Router,
               public route: ActivatedRoute,

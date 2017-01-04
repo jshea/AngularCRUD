@@ -7,7 +7,7 @@ import { AppApiService, Person }  from './../../shared';
   templateUrl: './person-detail.component.html'
 })
 export class PersonDetailComponent implements OnInit {
-  private person: Person = new Person();
+  public  person: Person = new Person();
   private dataLoading: boolean = false;
 
   constructor(public router: Router,
