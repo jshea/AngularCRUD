@@ -24,4 +24,5 @@ module.exports = webpackMerge(commonConfig, {
     historyApiFallback: true,
     stats: 'minimal'
   }
+
 });

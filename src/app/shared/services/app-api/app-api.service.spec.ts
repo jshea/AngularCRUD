@@ -4,9 +4,10 @@ import { HttpModule }      from '@angular/http';
 import { AppApiService } from './app-api.service';
 
 describe('App Api Service', () => {
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
+      imports:   [HttpModule],
       providers: [AppApiService]
     });
   });
@@ -14,4 +15,5 @@ describe('App Api Service', () => {
   it('should ...', inject([AppApiService], (appApiService: AppApiService) => {
     expect(true).toBe(true);
   }));
+
 });
