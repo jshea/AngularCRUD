@@ -4,23 +4,13 @@
   ],
   "rules": {
     "class-name": true,
-    "comment-format": [
-      true,
-      "check-space"
-    ],
+    "comment-format": [ true, "check-space" ],
     "curly": true,
     "eofline": true,
     "forin": true,
-    "indent": [
-      true,
-      "spaces"
-    ],
+    "indent": [ true, "spaces" ],
     "label-position": true,
-    "label-undefined": true,
-    "max-line-length": [
-      true,
-      140
-    ],
+    "max-line-length": [ true, 140 ],
     "member-access": false,
     "member-ordering": [
       true,
@@ -39,18 +29,15 @@
     ],
     "no-construct": true,
     "no-debugger": true,
-    "no-duplicate-key": true,
     "no-duplicate-variable": true,
     "no-empty": false,
     "no-eval": true,
-    "no-inferrable-types": true,
+    "no-inferrable-types": [ true ],
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
-    "no-unused-variable": true,
-    "no-unreachable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
@@ -60,18 +47,10 @@
       "check-catch",
       "check-whitespace"
     ],
-    "quotemark": [
-      true,
-      "single"
-    ],
+    "quotemark": [ true, "single" ],
     "radix": true,
-    "semicolon": [
-      "always"
-    ],
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
+    "semicolon": [ "always" ],
+    "triple-equals": [ true, "allow-null-check" ],
     "typedef-whitespace": [
       true,
       {
@@ -91,21 +70,27 @@
       "check-separator",
       "check-type"
     ],
-    "directive-selector-prefix": [true, "app"],
-    "component-selector-prefix": [true, "app"],
-    "directive-selector-name": [true, "camelCase"],
-    "component-selector-name": [true, "kebab-case"],
-    "directive-selector-type": [true, "attribute"],
-    "component-selector-type": [true, "element"],
     "pipe-naming": [true, "camelCase", "app"],
+
+    // Angular recommended config
+    //    https://github.com/mgechev/codelyzer#recommended-configuration
+    "directive-selector": [true, "attribute", ["app"], "camelCase"],
+    "component-selector": [true, "element",   ["app"], "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
+    "no-attribute-parameter-decorator": true,
     "no-input-rename": true,
     "no-output-rename": true,
+    "no-forward-ref": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
+
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "import-destructuring-spacing": true,
+    "templates-use-public": true,
+    "no-access-missing-member": true,
+    "invoke-injectable": true
   }
 }

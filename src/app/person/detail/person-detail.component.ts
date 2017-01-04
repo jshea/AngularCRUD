@@ -7,7 +7,7 @@ import { AppApiService, Person }  from './../../shared';
   templateUrl: './person-detail.component.html'
 })
 export class PersonDetailComponent implements OnInit {
-  private person: Person = new Person();
+  public  person: Person = new Person();
   private dataLoading: boolean = false;
 
   constructor(public router: Router,
@@ -35,9 +35,9 @@ export class PersonDetailComponent implements OnInit {
    *
    * @param {Person} person
    */
-  onEdit(person: Person) {
+  onEdit(person2Edit: Person) {
     this.router.navigate(
-      ['person/edit/' + person.id]
+      ['person/edit/' + person2Edit.id]
     );
   }
 
@@ -47,12 +47,12 @@ export class PersonDetailComponent implements OnInit {
    *
    * @param {Person} person
    */
-  onDelete(person: Person) {
+  onDelete(person2Delete: Person) {
     // TODO - Data loading indicator isn't showing
     this.dataLoading = true;
 
-    this.apiService.delete(this.person).subscribe(
-      (res: any) => {
+    this.apiService.delete(person2Delete).subscribe(
+      () => {
         this.dataLoading = false;
         // TODO - Why doesn't this navigate to /person, it seems
         //        to go to the root of the app, reloading data.

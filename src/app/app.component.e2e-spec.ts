@@ -1,3 +1,5 @@
+import { browser } from 'protractor';
+
 describe('app', function () {
 
   beforeEach(function () {

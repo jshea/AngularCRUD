@@ -1,3 +1,5 @@
+import { browser } from 'protractor';
+
 describe('person', function () {
 
   beforeEach(function () {

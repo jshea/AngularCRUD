@@ -92,9 +92,9 @@ module.exports = {
 
     // TODO - Added per TCR2-ng2
     new webpack.ProvidePlugin({
-      jQuery: 'jquery',
-      $: 'jquery',
-      jquery: 'jquery',
+      jQuery:          'jquery',
+      $:               'jquery',
+      jquery:          'jquery',
       "window.Tether": 'tether'
     })
 
