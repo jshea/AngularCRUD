@@ -1,9 +1,10 @@
 import { Component, OnInit }      from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { AppApiService, Person }  from './../../shared';
 
 @Component({
-  selector: 'app-person-detail',
+  selector:    'app-person-detail',
   templateUrl: './person-detail.component.html'
 })
 export class PersonDetailComponent implements OnInit {
@@ -14,13 +15,14 @@ export class PersonDetailComponent implements OnInit {
               public route: ActivatedRoute,
               public apiService: AppApiService) { }
 
+
   ngOnInit() {
     this.dataLoading = true;
 
     this.route.params.subscribe((params: any) => {
       this.person.id = (params.id as number);
 
-      this.apiService.getPerson(this.person.id).subscribe(
+      this.apiService.getPerson(this.person.id).toPromise().then(
         (res: any) => {
           this.dataLoading = false;
           this.person = res;
@@ -51,7 +53,7 @@ export class PersonDetailComponent implements OnInit {
     // TODO - Data loading indicator isn't showing
     this.dataLoading = true;
 
-    this.apiService.delete(person2Delete).subscribe(
+    this.apiService.delete(person2Delete).toPromise().then(
       () => {
         this.dataLoading = false;
         // TODO - Why doesn't this navigate to /person, it seems

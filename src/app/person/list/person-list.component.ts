@@ -36,7 +36,7 @@ export class PersonListComponent implements OnInit {
   ngOnInit() {
     this.dataLoading = true;
 
-    this.apiService.getPeople().subscribe(
+    this.apiService.getPeople().toPromise().then(
       (res: any) => {
         this.dataLoading = false;
         this.people = res;
