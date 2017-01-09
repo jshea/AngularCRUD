@@ -8,11 +8,11 @@ import { Person, PersonConstants } from '../../classes';
 
 /*
  * No need to worry about Providers/Services/Factories - which to use. Just
- * decorate a class with @Injectable()
+ * decorate a class with @Injectable()!
  */
 @Injectable()
 export class AppApiService {
-  private url = PersonConstants.BASE_URL;         // URL to web api
+  private url = PersonConstants.BASE_URL;         // URL to web service api
 
   constructor(private http: Http) {}
 
@@ -28,6 +28,10 @@ export class AppApiService {
 
   // Get one person
   getPerson(id: number): Observable<Person> {
+    /*
+     * ${} is ES6 variable interpolation
+     *    https://developers.google.com/web/updates/2015/01/ES6-Template-Strings
+     */
     let url = `${this.url}/${id}`;
 
     return this.http
