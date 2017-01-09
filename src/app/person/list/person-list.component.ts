@@ -33,10 +33,11 @@ export class PersonListComponent implements OnInit {
               public router: Router,
               public route: ActivatedRoute) {}
 
+
   ngOnInit() {
     this.dataLoading = true;
 
-    this.apiService.getPeople().subscribe(
+    this.apiService.getPeople().toPromise().then(
       (res: any) => {
         this.dataLoading = false;
         this.people = res;
@@ -66,6 +67,7 @@ export class PersonListComponent implements OnInit {
       }
     );
   }
+
 
   onClick(aPerson: Person) {
     this.router.navigate(

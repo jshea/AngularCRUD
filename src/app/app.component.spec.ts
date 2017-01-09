@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AppApiService } from './shared';
 
 describe('App', () => {
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpModule],
@@ -19,4 +20,5 @@ describe('App', () => {
     let fixture = TestBed.createComponent(AppComponent);
     expect(fixture.componentInstance instanceof AppComponent).toBe(true, 'should create AppComponent');
   });
+
 });

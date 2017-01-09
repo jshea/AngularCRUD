@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AppApiService, Person }  from './../../shared';
 
 /**
- * Edit (Add and Update) component. Uses ng2 reactive forms. Very similar to:
+ * Edit (Add and Update) component. Uses reactive forms. Very similar to:
  *   http://blog.thoughtram.io/angular/2016/06/22/model-driven-forms-in-angular-2.html
  *
  * @export
@@ -25,6 +25,7 @@ export class PersonEditComponent implements OnInit {
               public route: ActivatedRoute,
               public apiService: AppApiService,
               public formBuilder: FormBuilder) { }
+
 
   ngOnInit() {
     this.editForm = this.formBuilder.group({
@@ -58,7 +59,7 @@ export class PersonEditComponent implements OnInit {
         this.dataLoading = true;
         this.person.id = params.id;
 
-        this.apiService.getPerson(this.person.id).subscribe(
+        this.apiService.getPerson(this.person.id).toPromise().then(
           (res: any) => {
             this.person = res;
 
@@ -84,12 +85,12 @@ export class PersonEditComponent implements OnInit {
   /**
    * Save button handler. Saves changes and redirects to the people list.
    *
-   * @param {Person} person
+   * @memberOf PersonEditComponent
    */
   onSave() {
     this.dataLoading = true;    // TODO - Data loading indicator isn't showing
 
-    this.apiService.save(this.person).subscribe(
+    this.apiService.save(this.person).toPromise().then(
       () => {
         this.dataLoading = false;
         this.router.navigate( ['person'] );
