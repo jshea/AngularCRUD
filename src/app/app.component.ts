@@ -21,10 +21,10 @@ import { AppApiService } from './shared';
   `
 })
 export class AppComponent implements OnInit {
-  public title: string = 'Angular 2 CRUD';
+  public title: string = 'Angular CRUD';
 
   constructor(public appApiService: AppApiService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
 }
