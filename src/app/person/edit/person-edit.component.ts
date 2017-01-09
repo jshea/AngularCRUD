@@ -85,7 +85,7 @@ export class PersonEditComponent implements OnInit {
   /**
    * Save button handler. Saves changes and redirects to the people list.
    *
-   * @param {Person} person
+   * @memberOf PersonEditComponent
    */
   onSave() {
     this.dataLoading = true;    // TODO - Data loading indicator isn't showing

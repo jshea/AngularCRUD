@@ -17,7 +17,13 @@ export class AppApiService {
   constructor(private http: Http) {}
 
 
-  // Get full list of data
+  /**
+   * Get full list of data
+   *
+   * @returns {Observable<any>}
+   *
+   * @memberOf AppApiService
+   */
   getPeople(): Observable<any> {
     return this.http
                .get(this.url)
@@ -26,7 +32,14 @@ export class AppApiService {
   }
 
 
-  // Get one person
+  /**
+   * Get one person
+   *
+   * @param {number} id
+   * @returns {Observable<Person>}
+   *
+   * @memberOf AppApiService
+   */
   getPerson(id: number): Observable<Person> {
     /*
      * ${} is ES6 variable interpolation
@@ -41,7 +54,14 @@ export class AppApiService {
   }
 
 
-  // Changes (add and update)
+  /**
+   * Changes (add and update)
+   *
+   * @param {Person} person
+   * @returns {Observable<Person>}
+   *
+   * @memberOf AppApiService
+   */
   save(person: Person): Observable<Person> {
     if (person.id) {
       return this.put(person);
@@ -50,7 +70,14 @@ export class AppApiService {
   }
 
 
-  // Delete a person
+  /**
+   * Delete a person
+   *
+   * @param {Person} person
+   * @returns {Observable<any>}
+   *
+   * @memberOf AppApiService
+   */
   delete(person: Person): Observable<any> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -65,8 +92,16 @@ export class AppApiService {
 
   /*  Private methods   */
 
-  // Add new Person
-  // TODO - Why does Observable<Person> cause a tslint error?
+  /**
+   * Add new Person
+   * TODO - Why does Observable<Person> cause a tslint error?
+   *
+   * @private
+   * @param {Person} person
+   * @returns {Observable<any>}
+   *
+   * @memberOf AppApiService
+   */
   private post(person: Person): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
 
@@ -77,8 +112,16 @@ export class AppApiService {
   }
 
 
-  // Update existing Person
-  // TODO - Why does Observable<Person> cause a tslint error?
+  /**
+   * Update existing Person
+   * TODO - Why does Observable<Person> cause a tslint error?
+   *
+   * @private
+   * @param {Person} person
+   * @returns {Observable<any>}
+   *
+   * @memberOf AppApiService
+   */
   private put(person: Person): Observable<any> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -92,7 +135,15 @@ export class AppApiService {
   }
 
 
-  // Error handler
+  /**
+   * Error handler
+   *
+   * @private
+   * @param {*} error
+   * @returns
+   *
+   * @memberOf AppApiService
+   */
   private handleError(error: any) {
     console.error('An error occurred', error);
     return Observable.throw(error.message || error);
